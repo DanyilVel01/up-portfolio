@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danyil | AI Developer &amp; 3D Web Integrator</title>
+  <meta name="description" content="Portfolio of Danyil - AI Developer &amp; 3D Web Integrator specializing in Three.js, WebGL, custom PHP backend architectures, and machine learning integration.">
+  <meta name="theme-color" content="#0b0b16">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230b0b16' stroke='%23ff334b' stroke-width='6'/><text x='50%' y='58%' font-size='42' font-family='sans-serif' font-weight='bold' fill='%2300f0ff' text-anchor='middle'>D</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Poppins:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-antigravity">
+  <canvas id="bg-stars-canvas" aria-hidden="true"></canvas>
+  <div class="cosmic-grid-floor" aria-hidden="true"></div>
+
+  <header class="floating-nav" id="main-header">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Danyil Home">
+        <div class="cyber-rings-logo">
+          <span class="ring ring-outer"></span>
+          <span class="ring ring-inner"></span>
+          <span class="core-dot"></span>
+        </div>
+        <span class="logo-text">Danyil<span class="accent-dot">.</span></span>
+      </a>
+
+      <nav class="nav-links" id="nav-menu">
+        <a href="#about" class="nav-link">About Me</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#expertise" class="nav-link">Expertise</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
+        <a href="#portfolio" class="nav-cta-3d" id="btn-nav-3d">
+          <span class="cta-pulse"></span>
+          <svg class="nav-icon-3d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          Projects
+        </a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-content">
+      <a href="#about" class="mobile-link">About Me</a>
+      <a href="#portfolio" class="mobile-link">Portfolio</a>
+      <a href="#expertise" class="mobile-link">Expertise</a>
+      <a href="#contact" class="mobile-link">Contact Us</a>
+      <a href="#portfolio" class="mobile-link accent-link">Projects</a>
+    </div>
+  </div>
+
+  <aside class="sidebar-socials" aria-label="Social links and demo reel">
+    <div class="sidebar-track">
+      <div class="sidebar-label"><span>FOLLOW ME ON:</span></div>
+      <div class="social-icons-group">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><span class="btn-glow"></span><span class="icon-label">f</span></a>
+        <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Behance"><span class="btn-glow"></span><span class="icon-label">Be</span></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn"><span class="btn-glow"></span><span class="icon-label">in</span></a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub"><span class="btn-glow"></span><span class="icon-label">gh</span></a>
+      </div>
+      <button class="btn-demo-reel" id="btn-demo-reel" aria-label="Open 3D Demo Reel">
+        <div class="reel-spin-border"></div>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span class="reel-text">3D Demo Reel</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="page-wrapper">
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">WELCOME! I'M</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="glitch-text" data-text="Danyil">Danyil</span>
+          </h1>
+
+          <div class="hero-subtitle-wrapper">
+            <span class="cyber-bracket">[</span>
+            <h2 class="hero-subtitle">AI Developer &amp; 3D Web Integrator</h2>
+            <span class="cyber-bracket">]</span>
+          </div>
+
+          <p class="hero-bio">
+            Specializing in creating immersive 3D experiences and integrating cutting-edge Artificial Intelligence solutions into modern web applications. Proficient in JS, HTML, CSS, PHP, and neural interface prototyping.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tech-chip">Three.js / WebGL</span>
+            <span class="tech-chip">Neural AI Integrations</span>
+            <span class="tech-chip">JavaScript (ES6+)</span>
+            <span class="tech-chip">PHP Custom Backend</span>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#portfolio" class="btn-primary-neon">
+              <span class="btn-text">Explore Portfolio</span>
+              <span class="btn-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </a>
+            <a href="#contact" class="btn-secondary-glass">
+              <span class="btn-text">Contact Me</span>
+              <span class="btn-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: 3D Portal & Canvas -->
+        <div class="hero-visual">
+          <div class="portal-outer-wrap">
+            <!-- Animated Portal Ring FX -->
+            <div class="portal-nebula-aura"></div>
+            <div class="portal-ring-rotating"></div>
+            <div class="portal-energy-pulse"></div>
+
+            <!-- Portal Frame Container -->
+            <div class="portal-frame" id="hero-portal-frame">
+              <!-- Three.js Canvas Container -->
+              <canvas id="hero-3d-canvas" class="hero-canvas"></canvas>
+
+              <!-- Interactive Floating HUD Overlay -->
+              <div class="portal-hud-badge top-left">
+                <span class="hud-status-indicator"></span>
+                <span>AI CORE: ACTIVE</span>
+              </div>
+              <div class="portal-hud-badge bottom-right">
+                <span>INTERACTIVE 3D • DRAG & TILT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+      <div class="about-container">
+        <div class="section-intro text-center">
+          <div class="mini-badge">IDENTITY // DANYIL</div>
+          <h2 class="section-heading">Building My Way Into The Future</h2>
+          <p class="section-subtext">A developer focused on useful interfaces, expressive visuals, and the systems that make them intelligent.</p>
+        </div>
+
+        <div class="about-layout">
+          <article class="about-story glass-panel">
+            <div class="about-story-header">
+              <span class="about-index">01</span>
+              <span class="about-status"><span class="status-dot"></span>OPEN TO BUILD</span>
+            </div>
+            <h3 class="about-title">Hi, I'm Danyil.</h3>
+            <p class="about-text">I am a developer who enjoys turning ideas into clear, interactive web experiences. My foundation is JavaScript, HTML, and CSS, with PHP as a growing part of my backend toolkit.</p>
+            <p class="about-text">Right now I am learning how to bring 3D models into the browser and exploring artificial intelligence as the next layer of my work. I care about the details people feel: fast feedback, purposeful motion, and interfaces that are easy to understand.</p>
+            <div class="about-focus-line">
+              <span class="focus-label">CURRENT DIRECTION</span>
+              <span class="focus-value">AI systems + 3D web experiences</span>
+            </div>
+          </article>
+
+          <div class="about-skill-panels">
+            <article class="skill-panel glass-panel">
+              <div class="skill-panel-heading">
+                <span class="about-index">02</span>
+                <h3>Core Skills</h3>
+              </div>
+              <div class="skill-list">
+                <span class="skill-chip skill-primary">JavaScript</span>
+                <span class="skill-chip skill-primary">HTML</span>
+                <span class="skill-chip skill-primary">CSS</span>
+                <span class="skill-chip">PHP</span>
+                <span class="skill-chip">Responsive UI</span>
+                <span class="skill-chip">Git & GitHub</span>
+              </div>
+            </article>
+
+            <article class="skill-panel glass-panel">
+              <div class="skill-panel-heading">
+                <span class="about-index">03</span>
+                <h3>Learning Protocol</h3>
+              </div>
+              <div class="learning-row">
+                <div>
+                  <span class="learning-label">Artificial Intelligence</span>
+                  <span class="learning-description">Models, automation, and practical integrations</span>
+                </div>
+                <span class="learning-state">ACTIVE</span>
+              </div>
+              <div class="learning-row">
+                <div>
+                  <span class="learning-label">3D Web Development</span>
+                  <span class="learning-description">Browser-based scenes, models, and interaction</span>
+                </div>
+                <span class="learning-state">ACTIVE</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPANDABLE PORTFOLIO SECTION -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="portfolio-container">
+        <!-- Section Header -->
+        <div class="section-intro text-center">
+          <div class="mini-badge">FEATURED ARCHIVES</div>
+          <h2 class="section-heading">Interactive Portfolio</h2>
+          <p class="section-subtext">Click any card to inspect full technical architectural blueprints, live code snippets, and performance benchmarks.</p>
+        </div>
+
+        <div class="portfolio-expand-trigger-wrap">
+          <button class="btn-expand-categories" id="btn-expand-categories" aria-expanded="false" aria-controls="category-drawer">
+            <span class="btn-expand-glow"></span>
+            <span class="btn-expand-text">Expand Project Categories</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="category-drawer collapsed" id="category-drawer">
+          <div class="category-drawer-inner">
+            <div class="drawer-header-strip">
+              <span class="drawer-title">PROJECT CATEGORIES</span>
+              <span class="drawer-stats" id="active-category-count">Showing 1 Project</span>
+            </div>
+
+            <div class="portfolio-tabs" role="tablist">
+              <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">
+                <span class="tab-dot"></span>
+                <span>All Projects</span>
+              </button>
+              <button class="tab-btn" data-filter="ecommerce" role="tab" aria-selected="false">
+                <span class="tab-dot"></span>
+                <span>E-commerce</span>
+              </button>
+              <button class="tab-btn" data-filter="interactive-experience" role="tab" aria-selected="false">
+                <span class="tab-dot"></span>
+                <span>Interactive Experience</span>
+              </button>
+              <button class="tab-btn" data-filter="3d-showcase" role="tab" aria-selected="false">
+                <span class="tab-dot"></span>
+                <span>3D Showcase</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <article class="project-card glass-panel" data-category="ecommerce" data-id="valence-archive-labs">
+            <div class="card-glow"></div>
+            <div class="card-preview">
+              <div class="preview-scene-wrapper">
+                <img class="project-preview-image" src="img/clothes.png" alt="VALENCE ARCHIVE LABS storefront project preview" loading="lazy">
+                <div class="card-badge">Live Storefront</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category-label">E-commerce</span>
+                <span class="card-latency">60 Products</span>
+              </div>
+              <h3 class="card-title">VALENCE ARCHIVE LABS</h3>
+              <p class="card-summary">Immersive streetwear e-commerce experience with product filtering, responsive catalog browsing, shopping bag flow, lookbook storytelling, and an interactive 3D archive.</p>
+              <div class="card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">GitHub Pages</span>
+              </div>
+              <div class="card-footer">
+                <span class="inspect-text">Inspect Case Study</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-panel" data-category="interactive-experience" data-id="kivi-katko-03">
+            <div class="card-glow"></div>
+            <div class="card-preview">
+              <div class="preview-scene-wrapper">
+                <img class="project-preview-image" src="https://danyilvel01.github.io/huoneet/img/room1.jpg" alt="Investigation room from the Kivi escape-room project" loading="lazy">
+                <div class="card-badge">Escape Room Concept</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category-label">Interactive Experience</span>
+                <span class="card-latency">5 Rooms • 60 Minutes</span>
+              </div>
+              <h3 class="card-title">KIVI // KÄTKÖ 03</h3>
+              <p class="card-summary">An immersive escape-room investigation featuring five themed rooms, CCTV surveillance, interactive evidence analysis, a UV puzzle, and a live equipment budget simulator.</p>
+              <div class="card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">GitHub Pages</span>
+              </div>
+              <div class="card-footer">
+                <span class="inspect-text">Inspect Case Study</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card glass-panel" data-category="3d-showcase" data-id="aston-martin-3d">
+            <div class="card-glow"></div>
+            <div class="card-preview">
+              <div class="preview-scene-wrapper">
+                <img class="project-preview-image" src="img/car.png" alt="Aston Martin interactive 3D showroom project preview" loading="lazy">
+                <div class="card-badge">Interactive 3D</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category-label">3D Showcase</span>
+                <span class="card-latency">Scroll Driven</span>
+              </div>
+              <h3 class="card-title">Aston Martin Experience</h3>
+              <p class="card-summary">Cinematic automotive presentation built around scroll-driven storytelling, immersive 3D visuals, and a premium Aston Martin-inspired interface.</p>
+              <div class="card-tags">
+                <span class="tag">React</span>
+                <span class="tag">3D Web</span>
+                <span class="tag">WebGL</span>
+                <span class="tag">Scroll Animation</span>
+              </div>
+              <div class="card-footer">
+                <span class="inspect-text">Inspect Case Study</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE SECTION -->
+    <section class="expertise-section" id="expertise">
+      <div class="expertise-container">
+        <div class="section-intro text-center">
+          <div class="mini-badge">CURRENT FOCUS</div>
+          <h2 class="section-heading">What I Build</h2>
+          <p class="section-subtext">I combine useful interfaces, interactive visuals, and hands-on web development to turn ideas into experiences.</p>
+        </div>
+
+        <div class="expertise-grid">
+          <article class="expertise-card glass-panel">
+            <div class="expertise-kind">3D EXPERIENCES</div>
+            <h3 class="expertise-title">Interfaces with depth and motion</h3>
+            <p class="expertise-description">Interactive 3D showcases that bring product stories to life through WebGL, responsive layouts, and scroll-led presentation.</p>
+            <div class="expertise-footer">
+              <span class="expertise-tag">Three.js · WebGL</span>
+              <a href="https://astonmartin-3d-project.vercel.app/" class="expertise-link" target="_blank" rel="noopener noreferrer">View showcase &rarr;</a>
+            </div>
+          </article>
+
+          <article class="expertise-card glass-panel">
+            <div class="expertise-kind">WEB PRODUCTS</div>
+            <h3 class="expertise-title">Useful stores, built end to end</h3>
+            <p class="expertise-description">Responsive storefronts with product browsing, category filters, shopping-bag interactions, and visual merchandising.</p>
+            <div class="expertise-footer">
+              <span class="expertise-tag">HTML · CSS · JavaScript</span>
+              <a href="https://danyilvel01.github.io/clothes-shop/" class="expertise-link" target="_blank" rel="noopener noreferrer">Visit storefront &rarr;</a>
+            </div>
+          </article>
+
+          <article class="expertise-card glass-panel">
+            <div class="expertise-kind">INTERACTIVE CONCEPTS</div>
+            <h3 class="expertise-title">Stories you can explore</h3>
+            <p class="expertise-description">A five-room escape-room experience with CCTV, evidence analysis, a UV puzzle, and an interactive equipment budget.</p>
+            <div class="expertise-footer">
+              <span class="expertise-tag">KIVI // KÄTKÖ 03</span>
+              <a href="https://danyilvel01.github.io/huoneet/" class="expertise-link" target="_blank" rel="noopener noreferrer">Explore project &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <div class="contact-layout glass-panel">
+          <div class="contact-info-side">
+            <div class="mini-badge">CONTACT</div>
+            <h2 class="contact-title">Get in touch</h2>
+            <p class="contact-text">Have a project idea or want to collaborate? Send me an email.</p>
+          </div>
+
+          <div class="contact-email-panel">
+            <span class="contact-email-label">EMAIL ME</span>
+            <a class="contact-email-link" href="mailto:dv3765626@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>dv3765626@gmail.com</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cyber-footer">
+      <div class="footer-container">
+        <div class="footer-col-brand">
+          <div class="cyber-rings-logo">
+            <span class="ring ring-outer"></span>
+            <span class="ring ring-inner"></span>
+            <span class="core-dot"></span>
+          </div>
+          <span class="logo-text">Danyil<span class="accent-dot">.</span></span>
+          <p class="footer-sub">AI Developer & 3D Web Integrator. Designing the spatial and intelligent web of tomorrow.</p>
+        </div>
+
+        <div class="footer-col-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#about">About & Stats</a></li>
+            <li><a href="#portfolio">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col-stack">
+          <h4>Tech Stack</h4>
+          <div class="footer-tags">
+            <span>Three.js</span>
+            <span>WebGL 2.0</span>
+            <span>PHP 8.3</span>
+            <span>Python</span>
+            <span>TensorFlow</span>
+            <span>GSAP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Danyil. Built with Three.js, GSAP & Modern Web Standards. All rights reserved.</p>
+        <div class="footer-terminal-status">
+          <span class="terminal-dot"></span>
+          <span>SYSTEM ONLINE • ANTIGRAVITY ENGINE 2.4</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- FULLSCREEN INTERACTIVE PROJECT MODAL OVERLAY -->
+  <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-window glass-panel">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-meta">
+          <span class="modal-badge" id="modal-category">CATEGORY</span>
+          <span class="modal-metrics" id="modal-metrics">METRICS</span>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal dialog">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="modal-columns">
+          <!-- Left Column: Case Details & Snippet -->
+          <div class="modal-info-col">
+            <h2 class="modal-title" id="modal-title">Project Title</h2>
+            <p class="modal-desc" id="modal-desc">Detailed architecture explanation...</p>
+
+            <div class="modal-tech-stack">
+              <h4>Technologies & Libraries:</h4>
+              <div class="modal-tags" id="modal-tags"></div>
+            </div>
+
+            <div class="modal-code-wrapper">
+              <div class="code-header">
+                <span class="code-title">Production Code Excerpt</span>
+                <span class="code-lang">ES6 / GLSL / PHP</span>
+              </div>
+              <pre class="code-block"><code id="modal-code">// Code snippet will be injected here</code></pre>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive 3D Inspection Canvas -->
+          <div class="modal-visual-col">
+            <div class="modal-3d-wrapper">
+              <canvas id="modal-canvas"></canvas>
+              <div class="modal-3d-hint">Live 3D Model Instance • Drag to inspect geometry</div>
+            </div>
+
+            <div class="modal-actions">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary-neon modal-demo-btn" id="modal-demo-link">
+                <span>Launch Live Preview</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-secondary-glass" id="modal-action-close">
+                <span>Close Inspector</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D DEMO REEL MODAL -->
+  <div id="demo-reel-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="modal-backdrop" id="demo-reel-backdrop"></div>
+    <div class="modal-window reel-window glass-panel">
+      <div class="modal-header">
+        <div class="modal-meta">
+          <span class="modal-badge">3D DEMO REEL</span>
+          <span class="modal-metrics">Real-Time WebGL Audio-Visual Experience</span>
+        </div>
+        <button class="modal-close-btn" id="reel-close-btn" aria-label="Close demo reel">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="reel-canvas-wrap">
+        <canvas id="demo-reel-canvas"></canvas>
+        <div class="reel-overlay-hud">
+          <div class="reel-title-chip">Danyil • Spatial 3D Showreel 2026</div>
+          <p class="reel-note">Interactive shader tunnel & particle flow. Move cursor to bend space-time warp.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
